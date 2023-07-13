@@ -1,17 +1,27 @@
-import React from 'react'
-import Header from './Header'
+import React, { useEffect, useState } from "react";
+import Header from "./Header";
 
-function PageTemplate({content}) {
+function PageTemplate({ content }) {
+  const [contentHeight, setCt] = useState();
+  useEffect(() => {
+    setCt(document.querySelector("#contentHeight"));
+  }, []);
   return (
-    <div className='w-full h-screen flex justify-center flex-wrap'>
-      <div className="relative flex h-full w-full max-w-xl flex-col justify-between overflow-hidden bg-[#ECEFF4]">
+    <div className="w-full h-screen flex justify-center flex-wrap items-center">
+      <div
+        className="relative flex h-[97.5%] w-full flex-col justify-between overflow-hidden bg-[#ECEFF4] rounded-2xl"
+        id="contentHeight"
+        style={{
+          width: contentHeight && contentHeight.offsetHeight * 0.6 + "px",
+        }}
+      >
         <Header />
-        <div className='h-screen flex justify-center items-center'>
+        <div className="h-screen flex justify-center items-center">
           {content}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default PageTemplate
+export default PageTemplate;
