@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import Header from "./Header";
+// import Header from "./Header";
 
 function PageTemplate({ content }) {
   const [contentHeight, setContentHeight] = useState();
@@ -31,10 +31,8 @@ function PageTemplate({ content }) {
         className="relative flex h-[97.5%] w-full flex-col justify-between overflow-hidden bg-[#ECEFF4] rounded-2xl"
         id="contentHeight"
       >
-        <Header />
-        <div className="h-screen flex justify-center items-center">
-          {content}
-        </div>
+        {/* <Header /> */}
+        <div className="h-screen flex justify-center">{content}</div>
       </div>
     </div>
   );

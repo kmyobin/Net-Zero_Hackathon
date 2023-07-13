@@ -2,12 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
-  font-family: "NotoSansKR-Regular";
+  font-family: Roboto;
   src: url("../src/assets/fonts/NotoSansKR-Regular.otf") format("truetype");
 }
 
-body{
-  font-family: "NotoSansKR-Regular";
+body {
+  font-family: Roboto;
 }
