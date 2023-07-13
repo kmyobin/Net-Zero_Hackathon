@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function MainContent() {
-  return (
-    <div>
-      메인입니다.
-    </div>
-  )
+  return <div>메인입니다.</div>;
 }
 
-export default MainContent
+export default MainContent;
