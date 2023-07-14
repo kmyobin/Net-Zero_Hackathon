@@ -13,7 +13,7 @@ function Header() {
   const Lo = window.location.pathname;
 
   return (
-    <nav className="flex h-20 w-full items-center p-10 bg-[rgba(100,100,100,0)]">
+    <nav className="flex h-20 w-full items-center p-[8%] bg-[rgba(100,100,100,0)]">
       <div className="flex justify-between w-full ">
         <div>
           {Lo.includes('gallery') ? (
