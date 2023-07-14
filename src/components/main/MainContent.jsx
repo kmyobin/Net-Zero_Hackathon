@@ -10,6 +10,7 @@ import AWS from "aws-sdk";
 import PurchaseModal from "./PurchaseModal";
 import RewardTreeModal from "./RewardTreeModal";
 import RewardItemModal from "./RewardItemModal";
+import axios from "axios";
 const REGION = process.env.REACT_APP_AWS_REGION;
 const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY;
 const SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY;
@@ -21,17 +22,29 @@ AWS.config.update({
   secretAccessKey: SECRET_KEY,
 });
 
+const api_end_point = 'http://www.cookie-server.shop:9000';
+
 function MainContent() {
   const navigate = useNavigate();
   const photoInput = useRef(null);
   const [purchaseOpen, setPurchaseOpen] = useState(false);
   const [treeOpen, setTreeOpen] = useState(true);
   const [itemOpen, setItemOpen] = useState(false);
+  const [score, setScore] = useState();
 
   useEffect(() => {
     if (!sessionStorage.getItem("name")) {
       navigate("/login")
     }
+
+    axios.get(api_end_point + "/user/1")
+      .then((res) => {
+        console.log(res);
+        setScore(res.data.result.score);
+    })
+      .catch((err) => {
+        console.log(err);
+    })
   },[])
 
   const onClickImage = () => {
@@ -75,7 +88,8 @@ function MainContent() {
     if (purchaseOpen) {
       // 구매 목록 api 받아오기
     }
-  },[purchaseOpen])
+  }, [purchaseOpen])
+  
 
   /*
   useEffect(() => {
@@ -103,12 +117,12 @@ function MainContent() {
             <RewardItemModal itemOpen={itemOpen} setItemOpen={setItemOpen} />
           )}
         </div>
-        <Header />
+        <Header score={score} />
         <div>
           <div className="mt-[16%] flex justify-center items-center relative">
             <img src={Sky} alt="sky" width="70%" />
             <div className="flex justify-center items-center absolute bottom-[11.5%] font-bold text-4xl text-white">
-              582
+              {score}
             </div>
             <div className="flex justify-center items-center absolute top-[14.5%] w-full h-full">
               <img src={SmallTree} alt="smalltree" width="20%" />
