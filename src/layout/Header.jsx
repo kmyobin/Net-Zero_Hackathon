@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import Tree from "./Tree";
 import Home from "../assets/images/icons/Home.svg";
 import { useNavigate } from "react-router-dom";
 import Cloud from "../assets/images/icons/cloud.svg";
+import axios from "axios";
 
-function Header({ score }) {
+const api_end_point = "http://www.cookie-server.shop:9000";
+
+function Header() {
   const navigate = useNavigate();
+  const [score, setScore] = useState(); 
 
   const onClickHome = () => {
     navigate("/");
@@ -16,6 +20,16 @@ function Header({ score }) {
   };
 
   const Lo = window.location.pathname;
+
+  useEffect(() => {
+    axios.get(api_end_point+"/user/1")
+      .then((res) => {
+        setScore(res.data.result.totalScore);
+      })
+      .catch((err) => {
+        console.log(err);
+    })
+  }, [])
 
   return (
     <nav className="flex h-20 w-full items-center p-[8%] bg-[rgba(100,100,100,0)]">
