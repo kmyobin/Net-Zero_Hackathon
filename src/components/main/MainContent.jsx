@@ -67,13 +67,15 @@ function MainContent() {
             setPurchaseOpen(true);
           }
         });
-
-        if (purchaseOpen) {
-          // BE API 주소 요청
-        }
       }
     }
   };
+
+  useEffect(() => {
+    if (purchaseOpen) {
+      // 구매 목록 api 받아오기
+    }
+  },[purchaseOpen])
 
   /*
   useEffect(() => {

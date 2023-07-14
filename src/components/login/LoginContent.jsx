@@ -32,11 +32,11 @@ function LoginContent() {
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           }}
         />
-        <div className="flex flex-col items-center -mb-4">
-          <div className="text-[20px]">지구와 함께하는</div>
-          <div className="text-[20px]">어쩌구저쩌구 서비스</div>
+        <div className="flex flex-col items-center -mb-4 font-medium">
+          <div className="text-[20px]">친환경 소비를 통해</div>
+          <div className="text-[20px]">지구를 가꾸어 나가는</div>
         </div>
-        <h1 className="font-bold text-[30px]">가드너 (Gardener)</h1>
+        <h1 className="font-extrabold text-[30px]">가드너 (Gardener)</h1>
         <form className="flex flex-col gap-4 relative mt-4">
           <input
             className="w-[300px] h-[60px] bg-[#D9D9D9] rounded-3xl p-5 outline-none "
@@ -56,7 +56,7 @@ function LoginContent() {
             }}
             onKeyDown={handleOnKeyPress}
           ></input>
-          <span className="absolute right-0 -bottom-6 text-[#929292] text-xs opacity-70">
+          <span className="absolute right-0 -bottom-6 text-[#929292] text-xs opacity-70 cursor-pointer">
             Forget Password?
           </span>
         </form>

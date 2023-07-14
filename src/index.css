@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: Roboto;
+  font-family: NotoSans;
   src: url("../src/assets/fonts/NotoSansKR-Regular.otf") format("truetype");
 }
 
 body {
-  font-family: Roboto;
+  font-family: NotoSans;
   background-color: #efefef;
 }
 
