@@ -16,7 +16,7 @@ function MainContent() {
   return (
     <div className="bg-[#68A67D] w-full h-full">
       <Header />
-      <div className="">
+      <div>
         <div className="mt-[16%] flex justify-center items-center relative">
           <img src={Sky} alt="sky" width="70%" />
           <div className="flex justify-center items-center absolute bottom-[11.5%] font-bold text-4xl text-white">
