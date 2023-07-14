@@ -15,6 +15,7 @@ export default function Friends() {
           width={"29px"}
           height={"24px"}
           className="transition-all hover:scale-125"
+          id="tree"
         />
         <span className="text-gray-400 -mt-1">3</span>
       </div>
