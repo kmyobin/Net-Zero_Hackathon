@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../layout/Header";
 import Sky from "../../assets/images/sky.png";
 import ImageIcon from "../../assets/images/icons/Image.svg";
-import SmallTree from "../../assets/images/icons/smallTree_green.svg"
+import SmallTree from "../../assets/images/icons/smallTree_green.svg";
 
 function MainContent() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function MainContent() {
             582
           </div>
           <div className="flex justify-center items-center absolute bottom-[88px]">
-            <img src={SmallTree} alt="smalltree" width={75} height={60}/>
+            <img src={SmallTree} alt="smalltree" width={75} height={60} />
           </div>
         </div>
 

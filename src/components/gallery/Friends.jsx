@@ -12,19 +12,15 @@ export default function Friends() {
         <img src={smallTree} alt="smallTree" width={"29px"} height={"24px"} />
         <span className="text-gray-400 -mt-1">3</span>
       </div>
-      <div className="overflow-y-scroll">
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
+      <div className="overflow-y-auto h-full pt-10 pb-[340px]" id="friendList">
+        <Friend name={"장현석"} description={"나는 현석현석"} />
+        <Friend name={"권태훈"} description={"나는 태훈태훈"} />
+        <Friend name={"김효빈"} description={"나는 효빈효빈"} />
+        <Friend name={"유종건"} description={"나는 종건종건"} />
+        <Friend name={"유종건"} description={"나는 종건종건"} />
+        <Friend name={"유종건"} description={"나는 종건종건"} />
+        <Friend name={"유종건"} description={"나는 종건종건"} />
+        <Friend name={"유종건"} description={"나는 종건종건"} />
       </div>
     </div>
   );
