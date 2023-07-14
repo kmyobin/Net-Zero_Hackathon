@@ -7,7 +7,7 @@ import SmallTree from "../../assets/images/icons/smallTree_green.svg";
 import Receipt from "../../assets/images/icons/receipt.svg"
 
 import AWS from 'aws-sdk'
-import PurchaseContent from "./PurchaseModal";
+import PurchaseModal from "./PurchaseModal";
 const REGION = process.env.REACT_APP_AWS_REGION
 const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
 const SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
@@ -22,7 +22,7 @@ AWS.config.update({
 function MainContent() {
   const navigate = useNavigate();
   const photoInput = useRef(null);
-  const [success, setSuccess] = useState(true);
+  const [modalOpen, setModalOpen] = useState(true);
 
   const onClickImage = () => {
     navigate("gallery");
@@ -54,14 +54,12 @@ function MainContent() {
           } else {
             console.log("성공", data);
             pic_url = data.Location;
-            setSuccess(true);
+            setModalOpen(true);
           }
         });
 
-        if (success) {
+        if (modalOpen) {
           // BE API 주소 요청
-
-
         }
       }      
     }
@@ -69,15 +67,18 @@ function MainContent() {
     
   }
 
+  /*
   useEffect(() => {
-    setSuccess((prev) => prev);
-  },[success])
-
+    setModalOpen((prev) => prev);
+  }, [modalOpen]);
+  */
   return (
     <>
       <div className="bg-[#68A67D] w-full h-full">
-        <div className='flex justify-center items-center'>
-          {success === true && <PurchaseContent />}
+        <div className="">
+          {modalOpen && (
+            <PurchaseModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+          )}
         </div>
         <Header />
         <div>
