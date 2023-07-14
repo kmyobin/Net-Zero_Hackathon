@@ -10,13 +10,13 @@ import tree_1_1 from "../../assets/images/trees/greensmall.png";
 import tree_1_2 from "../../assets/images/trees/greennormal.png";
 import tree_1_3 from "../../assets/images/trees/greenbig.png";
 
-import tree_2_1 from "../../assets/images/trees/yellowsmall.png";
-import tree_2_2 from "../../assets/images/trees/yellownormal.png";
-import tree_2_3 from "../../assets/images/trees/yellowbig.png";
+import tree_2_1 from "../../assets/images/trees/pinksmall.png";
+import tree_2_2 from "../../assets/images/trees/pinknormal.png";
+import tree_2_3 from "../../assets/images/trees/pinkbig.png";
 
-import tree_3_1 from "../../assets/images/trees/pinksmall.png";
-import tree_3_2 from "../../assets/images/trees/pinknormal.png";
-import tree_3_3 from "../../assets/images/trees/pinkbig.png";
+import tree_3_1 from "../../assets/images/trees/yellowsmall.png";
+import tree_3_2 from "../../assets/images/trees/yellownormal.png";
+import tree_3_3 from "../../assets/images/trees/yellowbig.png";
 
 export default function GalleryContent() {
   const [currentTree, setCurrentTree] = useState();
