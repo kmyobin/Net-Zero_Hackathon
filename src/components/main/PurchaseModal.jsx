@@ -10,7 +10,7 @@ function PurchaseModal({ purchaseOpen, setPurchaseOpen }) {
   };
   return (
     <div className="absolute top-0 left-0 rounded-2xl w-full h-full z-10 bg-[rgba(0,0,0,0.4)]  flex justify-center items-center">
-      <div className="relative w-[80%] h-[70%] rounded-xl bg-white z-20 ">
+      <div className="relative w-[80%] h-[80%] rounded-xl bg-white z-20 ">
         <img
           src={Cancel}
           alt="cancel"
