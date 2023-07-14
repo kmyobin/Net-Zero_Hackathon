@@ -8,6 +8,7 @@ import Receipt from "../../assets/images/icons/receipt.svg";
 
 import AWS from "aws-sdk";
 import PurchaseModal from "./PurchaseModal";
+import NoticeModal from "./NoticeModal";
 const REGION = process.env.REACT_APP_AWS_REGION;
 const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY;
 const SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY;
@@ -22,7 +23,9 @@ AWS.config.update({
 function MainContent() {
   const navigate = useNavigate();
   const photoInput = useRef(null);
-  const [modalOpen, setModalOpen] = useState(true);
+  const [purchaseOpen, setPurchaseOpen] = useState(true);
+  const [noticeOpen, setNoticeOpen] = useState(true);
+
 
   const onClickImage = () => {
     navigate("gallery");
@@ -54,11 +57,11 @@ function MainContent() {
           } else {
             console.log("성공", data);
             pic_url = data.Location;
-            setModalOpen(true);
+            setPurchaseOpen(true);
           }
         });
 
-        if (modalOpen) {
+        if (purchaseOpen) {
           // BE API 주소 요청
         }
       }
@@ -74,10 +77,14 @@ function MainContent() {
     <>
       <div className="bg-[#68A67D] w-full h-full">
         <div className="">
-          {modalOpen && (
-            <PurchaseModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+          {purchaseOpen && (
+            <PurchaseModal
+              purchaseOpen={purchaseOpen}
+              setPurchaseOpen={setPurchaseOpen}
+            />
           )}
         </div>
+        <div className="">{noticeOpen && <NoticeModal noticeOpen={noticeOpen} setNoticeOpen={setNoticeOpen} />}</div>
         <Header />
         <div>
           <div className="mt-[16%] flex justify-center items-center relative">
