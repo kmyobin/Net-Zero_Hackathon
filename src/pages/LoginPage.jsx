@@ -3,7 +3,7 @@ import PageTemplate from '../layout/PageTemplate'
 import LoginContent from '../components/login/LoginContent'
 
 function LoginPage() {
-  return <PageTemplate content={LoginContent} />;
+  return <PageTemplate content={<LoginContent />} />;
 }
 
 export default LoginPage
