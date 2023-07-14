@@ -133,11 +133,17 @@ export default function GalleryContent() {
 
       active = false;
 
-      // db에 현재 이미지 업데이트(AWS)
-      // 현재 img 구역 캡쳐.
-      capturePlatform();
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      const uniquePlatform = document.querySelector("#uniquePlatform");
 
-      // 페이지 리로드 : 점수초기화 및 묘목으로 초기화
+      if (
+        mouseX >= uniquePlatform.getBoundingClientRect().left &&
+        mouseX <= uniquePlatform.getBoundingClientRect().right &&
+        mouseY >= uniquePlatform.getBoundingClientRect().top &&
+        mouseY <= uniquePlatform.getBoundingClientRect().bottom
+      )
+        capturePlatform();
     }
 
     contentHeight.addEventListener("touchstart", dragStart, false);
