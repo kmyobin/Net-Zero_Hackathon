@@ -59,20 +59,20 @@ export default function GalleryContent() {
     const file = new File([blob], "platform.png");
     console.log(file);
 
-    let pic_url;
-    s3.upload(params, (err, data) => {
-      if (err) {
-        console.log("오류", err);
-      } else {
-        console.log("성공", data);
-        pic_url = data.Location;
-        setPurchaseOpen(true);
-      }
-    });
+    // let pic_url;
+    // s3.upload(params, (err, data) => {
+    //   if (err) {
+    //     console.log("오류", err);
+    //   } else {
+    //     console.log("성공", data);
+    //     pic_url = data.Location;
+    //     setPurchaseOpen(true);
+    //   }
+    // });
 
-    if (purchaseOpen) {
-      // BE API 주소 요청
-    }
+    // if (purchaseOpen) {
+    //   // BE API 주소 요청
+    // }
   };
 
   useEffect(() => {
