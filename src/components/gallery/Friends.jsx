@@ -1,5 +1,4 @@
 import React from "react";
-import smallTree from "../../assets/images/icons/smallTree_green.svg";
 import Friend from "./Friend";
 
 export default function Friends() {
@@ -11,9 +10,7 @@ export default function Friends() {
       <div
         className="absolute right-[10%] rounded-full bg-white w-14 h-14 flex flex-col items-center py-2 shadow-2xl -top-[28px]"
         id="treeContainer"
-      >
-        <span className="text-gray-400 mt-[22.5px]">3</span>
-      </div>
+      ></div>
       <div className="overflow-y-auto h-full pt-10 pb-[340px]" id="friendList">
         <Friend
           name={"장현석"}
