@@ -6,7 +6,7 @@ import greennormal from "../../assets/images/trees/greennormal.png";
 import greensmall from "../../assets/images/trees/greensmall.png";
 import { useNavigate } from "react-router-dom";
 
-export default function Friend({ name, description, treeNum, id }) {
+export default function Friend({ name, description, treeNum, id, profile }) {
   const navigate = useNavigate();
   return (
     <div
@@ -60,7 +60,7 @@ export default function Friend({ name, description, treeNum, id }) {
           className="absolute w-12 bottom-0 right-4"
         />
       )}
-      <img src={profileImage} alt="profile" className="mr-4" />
+      <img src={profile} alt="profile" className="mr-4 rounded-xl" />
       <div className="flex flex-col justify-center">
         <span className="font-bold text-xl">{name}</span>
         <span className="opacity-40 text-sm mt-1">{description}</span>
