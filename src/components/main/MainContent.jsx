@@ -22,7 +22,7 @@ AWS.config.update({
   secretAccessKey: SECRET_KEY,
 });
 
-const api_end_point = 'http://www.cookie-server.shop:9000';
+const api_end_point = "http://www.cookie-server.shop:9000";
 
 function MainContent() {
   const navigate = useNavigate();
@@ -32,22 +32,23 @@ function MainContent() {
   const [itemOpen, setItemOpen] = useState(false);
   const [score, setScore] = useState(5000);
   const [treename, setTreename] = useState("greensmall");
-  const [treesize, setTreesize] =useState(50)
-  const [picUrl, setPicUrl] =useState('')
+  const [treesize, setTreesize] = useState(50);
+  const [picUrl, setPicUrl] = useState("");
 
   useEffect(() => {
     if (!sessionStorage.getItem("name")) {
-      navigate("/login")
+      navigate("/login");
     }
 
-    axios.get(api_end_point + "/user/1")
+    axios
+      .get(api_end_point + "/user/1")
       .then((res) => {
         console.log(res);
         setScore(res.data.result.score);
         let color = res.data.result.color;
         let size = res.data.result.size;
 
-        console.log(color, size)
+        console.log(color, size);
 
         if (color === 1 && size === 1) {
           setTreename("yellowsmall");
@@ -70,7 +71,6 @@ function MainContent() {
         } else if (color === 3 && size === 1) {
           setTreename("greensmall");
           setTreesize(50);
-
         } else if (color === 3 && size === 2) {
           setTreename("greennormal");
           setTreesize(150);
@@ -78,11 +78,11 @@ function MainContent() {
           setTreename("greenbig");
           setTreesize(200);
         }
-    })
+      })
       .catch((err) => {
         console.log(err);
-    })
-  },[])
+      });
+  }, []);
 
   const onClickImage = () => {
     navigate("gallery");
@@ -127,14 +127,14 @@ function MainContent() {
       // 구매 목록 api 받아오기
       getPurchaseList();
     }
-  }, [purchaseOpen])
+  }, [purchaseOpen]);
 
   useEffect(() => {
     console.log(treesize);
-  },[treesize])
+  }, [treesize]);
 
   const getPurchaseList = () => {
-    console.log("picURL: ",picUrl)
+    console.log("picURL: ", picUrl);
     const url = CLOVA_API;
     const message = {
       images: [
@@ -142,7 +142,7 @@ function MainContent() {
           format: "jpg",
           name: "medium",
           data: null,
-          url: picUrl
+          url: picUrl,
         },
       ],
       lang: "ko",
@@ -152,26 +152,28 @@ function MainContent() {
       version: "V1",
     };
 
-    axios.post(url, message, {
-      headers: {
-        'Content-Type': 'application/json',
-        'X-OCR-SECRET': CLOVA_SECRET,
-    }})
+    axios
+      .post(url, message, {
+        headers: {
+          "Content-Type": "application/json",
+          "X-OCR-SECRET": CLOVA_SECRET,
+        },
+      })
       .then((res) => {
-        console.log("성공",res);
+        console.log("성공", res);
       })
       .catch((err) => {
-      console.log("실패",err)
-    })
-  }
+        console.log("실패", err);
+      });
+  };
 
   useEffect(() => {
     console.log(treename);
-  },[treename])
-  
+  }, [treename]);
+
   const onClickGarden = () => {
-    navigate("/gallery")
-  }
+    navigate("/gallery");
+  };
 
   /*
   useEffect(() => {

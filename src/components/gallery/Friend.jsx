@@ -36,14 +36,14 @@ export default function Friend({ name, description, treeNum, id }) {
         <img
           src={fourTrees}
           alt="fourTrees"
-          className="absolute w-24 bottom-0 right-4"
+          className="absolute w-24 -bottom-2 right-4"
         />
       )}
       {treeNum === 2 && (
         <img
           src={twoTrees}
           alt="twoTrees"
-          className="absolute w-12 bottom-0 right-4"
+          className="absolute w-12 -bottom-2 right-4"
         />
       )}
       {treeNum === 3 && (
