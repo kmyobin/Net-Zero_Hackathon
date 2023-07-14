@@ -43,8 +43,8 @@ function RewardTreeModal({ treeOpen, setTreeOpen }) {
             />
           </div>
           <div className="my-[8%] flex justify-center items-center text-center">
-            {sessionStorage.getItem("name")} 님이 정성껏 키워주신 나무가 <br />
-            두 그루의 나무로 자라났어요
+            {sessionStorage.getItem("name")} 님이 정성껏 쌓아주신 포인트가 <br />
+            실제 나무를 심는데 사용되었어요.
           </div>
         </div>
       </div>

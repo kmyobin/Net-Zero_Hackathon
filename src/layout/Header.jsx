@@ -4,7 +4,7 @@ import Home from "../assets/images/icons/Home.svg";
 import { useNavigate } from "react-router-dom";
 import Cloud from "../assets/images/icons/cloud.svg";
 
-function Header() {
+function Header({ score }) {
   const navigate = useNavigate();
 
   const onClickHome = () => {
@@ -33,7 +33,7 @@ function Header() {
           )}
         </div>
         <div>
-          <Tree />
+          <Tree score={score} />
         </div>
       </div>
     </nav>
