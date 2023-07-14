@@ -5,7 +5,7 @@ import Sky from "../../assets/images/sky.png";
 import ImageIcon from "../../assets/images/icons/Image.svg";
 import SmallTree from "../../assets/images/icons/smallTree_green.svg";
 
-const REGION = process.env.REACT_APP_AWS_REGION
+const REGION = process.env.REACT_APP_AWS_REGION;
 
 function MainContent() {
   const navigate = useNavigate();
@@ -13,9 +13,7 @@ function MainContent() {
     navigate("gallery");
   };
 
-  const onClickCamera = () => {
-
-  };
+  const onClickCamera = () => {};
 
   return (
     <div className="bg-[#68A67D] w-full h-full">
