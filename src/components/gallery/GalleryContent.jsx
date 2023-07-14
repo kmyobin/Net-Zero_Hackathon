@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Friends from "./Friends";
 import Header from "../../layout/Header";
 import AWS from "aws-sdk";
@@ -7,21 +7,27 @@ import smallTree from "../../assets/images/icons/smallTree_green.svg";
 import axios from "axios";
 
 export default function GalleryContent() {
-  // treeContainer와 platform 사이의 거리 구하기
-  useEffect(() => {
-    const treeContainer = document.querySelector("#treeContainer");
-    const platform = document.querySelector("#platform");
+  const [currentTree, setCurrentTree] = useState();
+  const [currentScore, setCurrentScore] = useState();
 
-    const moveX =
-      treeContainer.getBoundingClientRect().x -
-      platform.getBoundingClientRect().x;
-    const moveY =
-      treeContainer.getBoundingClientRect().y -
-      platform.getBoundingClientRect().y;
+  useEffect(() => {
+    // const treeContainer = document.querySelector("#treeContainer");
+    // const platform = document.querySelector("#platform");
+    // const moveX =
+    //   treeContainer.getBoundingClientRect().x -
+    //   platform.getBoundingClientRect().x;
+    // const moveY =
+    //   treeContainer.getBoundingClientRect().y -
+    //   platform.getBoundingClientRect().y;
 
     const tree = document.querySelector("#tree");
     tree.style.left = `${360}px`;
     tree.style.bottom = `${-30}px`;
+
+    axios.get("http://www.cookie-server.shop:9000/trees/1").then((res) => {
+      setCurrentScore(res.data.result.score);
+      setCurrentTree(res.data.result.currentTree);
+    });
 
     // db에서 이미지 가져옴
     const uniquePlatform = document.querySelector("#uniquePlatform");
@@ -154,6 +160,9 @@ export default function GalleryContent() {
     contentHeight.addEventListener("mouseup", dragEnd, false);
     contentHeight.addEventListener("mousemove", drag, false);
   }, []);
+
+  console.log(currentTree);
+  console.log(currentScore);
 
   return (
     <div className="w-full bg-[#C3E2B8]">
