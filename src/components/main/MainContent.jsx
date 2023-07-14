@@ -1,19 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../../layout/Header"
-import Sky from "../../assets/images/sky.png"
-import ImageIcon from "../../assets/images/icons/Image.svg"
-import TreeIcon from "../../assets/images/treesmall.png"
+import Header from "../../layout/Header";
+import Sky from "../../assets/images/sky.png";
+import ImageIcon from "../../assets/images/icons/Image.svg";
 
 function MainContent() {
   const navigate = useNavigate();
   const onClickImage = () => {
-    navigate("gallery")
-  }
+    navigate("gallery");
+  };
 
-  const onClickCamera = () => {
-    
-  }
+  const onClickCamera = () => {};
 
   return (
     <div className="bg-[#68A67D] w-full h-full">
@@ -27,8 +24,10 @@ function MainContent() {
         </div>
 
         <div className="mt-20 flex justify-center items-center">
-          <div className="bg-white rounded-full p-5 shadow-2xl w-[70px] h-[70px] cursor-pointer" onClick={onClickCamera}>
-        </div>
+          <div
+            className="bg-white rounded-full p-5 shadow-2xl w-[70px] h-[70px] cursor-pointer"
+            onClick={onClickCamera}
+          ></div>
         </div>
 
         <div className="mt-20 flex justify-center items-center">
