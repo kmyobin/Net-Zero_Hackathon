@@ -18,7 +18,7 @@ function RewardTreeModal({ treeOpen, setTreeOpen }) {
 
   return (
     <div className="absolute top-0 left-0 rounded-2xl w-full h-full z-10 bg-[rgba(0,0,0,0.4)]  flex justify-center items-center ">
-      <div className="relative w-[80%] h-[65%] rounded-xl bg-white z-20 scale-0 transform transition-transform duration-1000">
+      <div className="relative w-[80%] h-[70%] rounded-xl bg-white z-20 scale-0 transform transition-transform duration-1000">
         <img
           src={Cancel}
           alt="cancel"
@@ -27,7 +27,7 @@ function RewardTreeModal({ treeOpen, setTreeOpen }) {
         />
 
         <div className="">
-          <div className="font-[1000] text-4xl my-[15%] flex justify-center items-center">
+          <div className="font-[1000] text-4xl mt-[15%] flex justify-center items-center mb-[15%]">
             축하합니다!
           </div>
           <div className="flex justify-center items-center relative">
@@ -42,7 +42,7 @@ function RewardTreeModal({ treeOpen, setTreeOpen }) {
               className="absolute bottom-[20%] w-[30%]"
             />
           </div>
-          <div className="my-[8%] flex justify-center items-center text-center">
+          <div className="my-[17%] flex justify-center items-center text-center">
             {sessionStorage.getItem("name")} 님이 정성껏 쌓아주신 포인트가 <br />
             실제 나무를 심는데 사용되었어요.
           </div>
