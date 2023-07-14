@@ -26,31 +26,31 @@ export default function GalleryContent() {
   useEffect(() => {
     if (currentTree) {
       if (currentTree.size === 1 && currentTree.color === 1) {
-        setTreeToPaint(tree_1_1);
+        setTreeToPaint(tree_3_1);
       }
       if (currentTree.size === 1 && currentTree.color === 2) {
         setTreeToPaint(tree_2_1);
       }
       if (currentTree.size === 1 && currentTree.color === 3) {
-        setTreeToPaint(tree_3_1);
+        setTreeToPaint(tree_1_1);
       }
       if (currentTree.size === 2 && currentTree.color === 1) {
-        setTreeToPaint(tree_1_2);
+        setTreeToPaint(tree_3_2);
       }
       if (currentTree.size === 2 && currentTree.color === 2) {
         setTreeToPaint(tree_2_2);
       }
       if (currentTree.size === 2 && currentTree.color === 3) {
-        setTreeToPaint(tree_3_2);
+        setTreeToPaint(tree_1_2);
       }
       if (currentTree.size === 3 && currentTree.color === 1) {
-        setTreeToPaint(tree_1_3);
+        setTreeToPaint(tree_3_3);
       }
       if (currentTree.size === 3 && currentTree.color === 2) {
         setTreeToPaint(tree_2_3);
       }
       if (currentTree.size === 3 && currentTree.color === 3) {
-        setTreeToPaint(tree_3_3);
+        setTreeToPaint(tree_1_3);
       }
     }
   }, [currentTree]);
@@ -58,7 +58,7 @@ export default function GalleryContent() {
   useEffect(() => {
     const tree = document.querySelector("#tree");
     tree.style.left = `${360}px`;
-    tree.style.bottom = `${-30}px`;
+    tree.style.bottom = `${-35}px`;
 
     axios.get("http://www.cookie-server.shop:9000/trees/1").then((res) => {
       console.log(res.data.result.score);
