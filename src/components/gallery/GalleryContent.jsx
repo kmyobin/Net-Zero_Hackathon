@@ -6,25 +6,62 @@ import domtoimage from "dom-to-image";
 import smallTree from "../../assets/images/icons/smallTree_green.svg";
 import axios from "axios";
 
+import tree_1_1 from "../../assets/images/trees/greensmall.png";
+import tree_1_2 from "../../assets/images/trees/greennormal.png";
+import tree_1_3 from "../../assets/images/trees/greenbig.png";
+
+import tree_2_1 from "../../assets/images/trees/yellowsmall.png";
+import tree_2_2 from "../../assets/images/trees/yellownormal.png";
+import tree_2_3 from "../../assets/images/trees/yellowbig.png";
+
+import tree_3_1 from "../../assets/images/trees/pinksmall.png";
+import tree_3_2 from "../../assets/images/trees/pinknormal.png";
+import tree_3_3 from "../../assets/images/trees/pinkbig.png";
+
 export default function GalleryContent() {
   const [currentTree, setCurrentTree] = useState();
   const [currentScore, setCurrentScore] = useState();
+  const [treeToPaint, setTreeToPaint] = useState();
 
   useEffect(() => {
-    // const treeContainer = document.querySelector("#treeContainer");
-    // const platform = document.querySelector("#platform");
-    // const moveX =
-    //   treeContainer.getBoundingClientRect().x -
-    //   platform.getBoundingClientRect().x;
-    // const moveY =
-    //   treeContainer.getBoundingClientRect().y -
-    //   platform.getBoundingClientRect().y;
+    if (currentTree) {
+      if (currentTree.size === 1 && currentTree.color === 1) {
+        setTreeToPaint(tree_1_1);
+      }
+      if (currentTree.size === 1 && currentTree.color === 2) {
+        setTreeToPaint(tree_1_2);
+      }
+      if (currentTree.size === 1 && currentTree.color === 3) {
+        setTreeToPaint(tree_1_3);
+      }
+      if (currentTree.size === 2 && currentTree.color === 1) {
+        setTreeToPaint(tree_2_1);
+      }
+      if (currentTree.size === 2 && currentTree.color === 2) {
+        setTreeToPaint(tree_2_2);
+      }
+      if (currentTree.size === 2 && currentTree.color === 3) {
+        setTreeToPaint(tree_2_3);
+      }
+      if (currentTree.size === 3 && currentTree.color === 1) {
+        setTreeToPaint(tree_3_1);
+      }
+      if (currentTree.size === 3 && currentTree.color === 2) {
+        setTreeToPaint(tree_3_2);
+      }
+      if (currentTree.size === 3 && currentTree.color === 3) {
+        setTreeToPaint(tree_3_3);
+      }
+    }
+  }, [currentTree]);
 
+  useEffect(() => {
     const tree = document.querySelector("#tree");
     tree.style.left = `${360}px`;
     tree.style.bottom = `${-30}px`;
 
     axios.get("http://www.cookie-server.shop:9000/trees/1").then((res) => {
+      console.log(res.data);
       setCurrentScore(res.data.result.score);
       setCurrentTree(res.data.result.currentTree);
     });
@@ -52,12 +89,7 @@ export default function GalleryContent() {
   });
 
   const capturePlatform = () => {
-    // html2canvas(document.querySelector("#platform")).then((canvas) => {
-    //   document.body.appendChild(canvas);
-    // });
     domtoimage.toBlob(document.querySelector("#platform")).then((blob) => {
-      // document.body.appendChild(blob);
-      // saveAs(blob, "card.png");
       handlePlatformUpload(blob);
     });
   };
@@ -78,7 +110,6 @@ export default function GalleryContent() {
         console.log("오류", err);
       } else {
         console.log("성공", data);
-        // 페이지 리로드
         window.location.reload();
       }
     });
@@ -161,9 +192,6 @@ export default function GalleryContent() {
     contentHeight.addEventListener("mousemove", drag, false);
   }, []);
 
-  console.log(currentTree);
-  console.log(currentScore);
-
   return (
     <div className="w-full bg-[#C3E2B8]">
       <div className="flex flex-col mb-6">
@@ -177,7 +205,7 @@ export default function GalleryContent() {
           />
 
           <img
-            src={smallTree}
+            src={setTreeToPaint && setTreeToPaint}
             alt="smallTree"
             width={"29px"}
             height={"24px"}
