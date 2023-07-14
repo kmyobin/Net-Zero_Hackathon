@@ -1,12 +1,14 @@
-import React from 'react'
+import React from "react";
 import Cancel from "../../assets/images/icons/cancel.svg";
-import LevelUp from "../../assets/images/icons/levelup.svg"
-import LevelUpTree from "../../assets/images/leveluptree.png"
-import TreeIcon from "../../assets/images/notice_tree.png"
+import LevelUp from "../../assets/images/icons/levelup.svg";
+import LevelUpTree from "../../assets/images/leveluptree.png";
+import TreeIcon from "../../assets/images/notice_tree.png";
 
 function RewardTreeModal({ treeOpen, setTreeOpen }) {
   const onClickCancel = () => {
     setTreeOpen(!treeOpen);
+
+    window.location.reload();
   };
   setTimeout(function () {
     const element = document.querySelector(".scale-0");
@@ -43,7 +45,8 @@ function RewardTreeModal({ treeOpen, setTreeOpen }) {
             />
           </div>
           <div className="my-[17%] flex justify-center items-center text-center">
-            {sessionStorage.getItem("name")} 님이 정성껏 쌓아주신 포인트가 <br />
+            {sessionStorage.getItem("name")} 님이 정성껏 쌓아주신 포인트가{" "}
+            <br />
             실제 나무를 심는데 사용되었어요.
           </div>
         </div>

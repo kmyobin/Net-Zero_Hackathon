@@ -9,7 +9,7 @@ function RewardItemModal({ itemOpen, setItemOpen, setTreeOpen, isOverScore }) {
   const onClickCancel = () => {
     setItemOpen(!itemOpen);
 
-    isOverScore && setTreeOpen(true);
+    isOverScore ? setTreeOpen(true) : window.location.reload();
   };
   setTimeout(function () {
     const element = document.querySelector(".scale-0");
