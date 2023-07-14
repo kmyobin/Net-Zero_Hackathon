@@ -31,6 +31,7 @@ function MainContent() {
   const [treeOpen, setTreeOpen] = useState(true);
   const [itemOpen, setItemOpen] = useState(false);
   const [score, setScore] = useState();
+  const [treename, setTreename] = useState();
 
   useEffect(() => {
     if (!sessionStorage.getItem("name")) {
@@ -41,6 +42,30 @@ function MainContent() {
       .then((res) => {
         console.log(res);
         setScore(res.data.result.score);
+        let color = res.data.result.color;
+        let size = res.data.result.size;
+
+        console.log(color, size)
+
+        if (color === 1 && size === 1) {
+          setTreename("yellowsmall");
+        } else if (color === 1 && size === 2) {
+          setTreename("yellownormal");
+        } else if (color === 1 && size === 3) {
+          setTreename("yellowbig");
+        } else if (color === 2 && size === 1) {
+          setTreename("pinksmall");
+        } else if (color === 2 && size === 2) {
+          setTreename("pinknormal");
+        } else if (color === 2 && size === 3) {
+          setTreename("pinkbig");
+        } else if (color === 3 && size === 1) {
+          setTreename("greensmall");
+        } else if (color === 3 && size === 2) {
+          setTreename("greennormal");
+        } else if (color === 3 && size === 3) {
+          setTreename("greenbig");
+        }
     })
       .catch((err) => {
         console.log(err);
@@ -117,15 +142,15 @@ function MainContent() {
             <RewardItemModal itemOpen={itemOpen} setItemOpen={setItemOpen} />
           )}
         </div>
-        <Header score={score} />
+        <Header />
         <div>
           <div className="mt-[16%] flex justify-center items-center relative">
             <img src={Sky} alt="sky" width="70%" />
             <div className="flex justify-center items-center absolute bottom-[11.5%] font-bold text-4xl text-white">
               {score}
             </div>
-            <div className="flex justify-center items-center absolute top-[14.5%] w-full h-full">
-              <img src={SmallTree} alt="smalltree" width="20%" />
+            <div className="flex justify-center items-center absolute top-[9%] w-full h-full">
+              <img src={require(`../../assets/images/trees/${treename}.png`)} alt="tree" width="20%" />
             </div>
           </div>
 
