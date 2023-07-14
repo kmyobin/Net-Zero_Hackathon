@@ -8,7 +8,8 @@ import Receipt from "../../assets/images/icons/receipt.svg";
 
 import AWS from "aws-sdk";
 import PurchaseModal from "./PurchaseModal";
-import NoticeModal from "./NoticeModal";
+import RewardTreeModal from "./RewardTreeModal";
+import RewardItemModal from "./RewardItemModal";
 const REGION = process.env.REACT_APP_AWS_REGION;
 const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY;
 const SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY;
@@ -24,7 +25,8 @@ function MainContent() {
   const navigate = useNavigate();
   const photoInput = useRef(null);
   const [purchaseOpen, setPurchaseOpen] = useState(false);
-  const [noticeOpen, setNoticeOpen] = useState(true);
+  const [treeOpen, setTreeOpen] = useState(true);
+  const [itemOpen, setItemOpen] = useState(false);
 
   useEffect(() => {
     if (!sessionStorage.getItem("name")) {
@@ -65,13 +67,15 @@ function MainContent() {
             setPurchaseOpen(true);
           }
         });
-
-        if (purchaseOpen) {
-          // BE API 주소 요청
-        }
       }
     }
   };
+
+  useEffect(() => {
+    if (purchaseOpen) {
+      // 구매 목록 api 받아오기
+    }
+  },[purchaseOpen])
 
   /*
   useEffect(() => {
@@ -90,11 +94,13 @@ function MainContent() {
           )}
         </div>
         <div className="">
-          {noticeOpen && (
-            <NoticeModal
-              noticeOpen={noticeOpen}
-              setNoticeOpen={setNoticeOpen}
-            />
+          {treeOpen && (
+            <RewardTreeModal treeOpen={treeOpen} setTreeOpen={setTreeOpen} />
+          )}
+        </div>
+        <div className="">
+          {itemOpen && (
+            <RewardItemModal itemOpen={itemOpen} setItemOpen={setItemOpen} />
           )}
         </div>
         <Header />
