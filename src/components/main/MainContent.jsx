@@ -26,7 +26,6 @@ function MainContent() {
   const [purchaseOpen, setPurchaseOpen] = useState(true);
   const [noticeOpen, setNoticeOpen] = useState(true);
 
-
   const onClickImage = () => {
     navigate("gallery");
   };
@@ -84,7 +83,14 @@ function MainContent() {
             />
           )}
         </div>
-        <div className="">{noticeOpen && <NoticeModal noticeOpen={noticeOpen} setNoticeOpen={setNoticeOpen} />}</div>
+        <div className="">
+          {noticeOpen && (
+            <NoticeModal
+              noticeOpen={noticeOpen}
+              setNoticeOpen={setNoticeOpen}
+            />
+          )}
+        </div>
         <Header />
         <div>
           <div className="mt-[16%] flex justify-center items-center relative">

@@ -20,9 +20,6 @@ export default function GalleryContent() {
       treeContainer.getBoundingClientRect().y -
       platform.getBoundingClientRect().y;
 
-    console.log(moveX);
-    console.log(moveY);
-
     const tree = document.querySelector("#tree");
     tree.style.left = `${342}px`;
     tree.style.bottom = `${-30}px`;
@@ -47,16 +44,20 @@ export default function GalleryContent() {
     domtoimage.toBlob(document.querySelector("#platform")).then((blob) => {
       // document.body.appendChild(blob);
       // saveAs(blob, "card.png");
+      handlePlatformUpload(blob);
     });
   };
 
-  const handlePlatformUpload = () => {
+  const handlePlatformUpload = (blob) => {
     const s3 = new AWS.S3();
     const params = {
       Bucket: BUCKET,
-      Key: "ㅎㅇ",
-      Body: "ㅎㅇ",
+      Key: "",
+      Body: "",
     };
+
+    const file = new File([blob], "platform.png");
+    console.log(file);
 
     let pic_url;
     s3.upload(params, (err, data) => {
@@ -65,8 +66,13 @@ export default function GalleryContent() {
       } else {
         console.log("성공", data);
         pic_url = data.Location;
+        setPurchaseOpen(true);
       }
     });
+
+    if (purchaseOpen) {
+      // BE API 주소 요청
+    }
   };
 
   useEffect(() => {
@@ -149,7 +155,6 @@ export default function GalleryContent() {
             src={require("../../assets/images/platform.png")}
             alt="platform"
           />
-          {/* <div className="w-10 h-10 absolute bg-red-700 top-32 left-44"></div> */}
           <img
             src={smallTree}
             alt="smallTree"
