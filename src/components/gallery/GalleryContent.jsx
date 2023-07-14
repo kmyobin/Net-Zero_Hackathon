@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import Friends from "./Friends";
 import Header from "../../layout/Header";
 import AWS from "aws-sdk";
-import html2canvas from "html2canvas";
 import domtoimage from "dom-to-image";
-import { saveAs } from "file-saver";
 import smallTree from "../../assets/images/icons/smallTree_green.svg";
 import axios from "axios";
 
@@ -162,9 +160,7 @@ export default function GalleryContent() {
             id="uniquePlatform"
             className="mx-auto"
           />
-          {/* <img
-            src={`https://${BUCKET}.s3.${REGION}.amazonaws.com/1_platform.png`}
-          /> */}
+
           <img
             src={smallTree}
             alt="smallTree"
