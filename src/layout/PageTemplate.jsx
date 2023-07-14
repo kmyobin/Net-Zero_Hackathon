@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import Header from "./Header";
 
 function PageTemplate({ content }) {
   const [contentHeight, setContentHeight] = useState();
@@ -24,8 +23,6 @@ function PageTemplate({ content }) {
       (document.querySelector("#contentHeight").offsetHeight * 6) / 11 + "px"
     );
   });
-  const Lo = window.location.pathname;
-
   return (
     <div className="w-full h-screen flex justify-center flex-wrap items-center">
       <div
