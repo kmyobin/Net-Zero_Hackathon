@@ -23,8 +23,14 @@ AWS.config.update({
 function MainContent() {
   const navigate = useNavigate();
   const photoInput = useRef(null);
-  const [purchaseOpen, setPurchaseOpen] = useState(true);
+  const [purchaseOpen, setPurchaseOpen] = useState(false);
   const [noticeOpen, setNoticeOpen] = useState(true);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("name")) {
+      navigate("/login")
+    }
+  },[])
 
   const onClickImage = () => {
     navigate("gallery");
