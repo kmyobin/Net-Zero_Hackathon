@@ -13,11 +13,19 @@ export default function GalleryContent() {
     const treeContainer = document.querySelector("#treeContainer");
     const platform = document.querySelector("#platform");
 
-    console.log(treeContainer.getBoundingClientRect());
-    console.log(platform.getBoundingClientRect());
+    const moveX =
+      treeContainer.getBoundingClientRect().x -
+      platform.getBoundingClientRect().x;
+    const moveY =
+      treeContainer.getBoundingClientRect().y -
+      platform.getBoundingClientRect().y;
+
+    console.log(moveX);
+    console.log(moveY);
 
     const tree = document.querySelector("#tree");
-    tree.style.transform = "translate(20px, 20px)";
+    tree.style.left = `${342}px`;
+    tree.style.bottom = `${-30}px`;
   }, []);
 
   // AWS 서비스 이용
@@ -147,7 +155,7 @@ export default function GalleryContent() {
             alt="smallTree"
             width={"29px"}
             height={"24px"}
-            className="transition-all hover:scale-125"
+            className="transition-all hover:scale-125 absolute bottom-0 left-0 z-10"
             id="tree"
           />
         </div>
