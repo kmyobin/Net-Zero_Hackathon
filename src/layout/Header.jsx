@@ -9,7 +9,7 @@ const api_end_point = "http://www.cookie-server.shop:9000";
 
 function Header() {
   const navigate = useNavigate();
-  const [score, setScore] = useState(); 
+  const [score, setScore] = useState(9000); 
 
   const onClickHome = () => {
     navigate("/");

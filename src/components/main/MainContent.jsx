@@ -30,8 +30,8 @@ function MainContent() {
   const [purchaseOpen, setPurchaseOpen] = useState(false);
   const [treeOpen, setTreeOpen] = useState(true);
   const [itemOpen, setItemOpen] = useState(false);
-  const [score, setScore] = useState();
-  const [treename, setTreename] = useState();
+  const [score, setScore] = useState(5000);
+  const [treename, setTreename] = useState("greensmall");
 
   useEffect(() => {
     if (!sessionStorage.getItem("name")) {
@@ -114,6 +114,10 @@ function MainContent() {
       // 구매 목록 api 받아오기
     }
   }, [purchaseOpen])
+
+  useEffect(() => {
+    console.log(treename);
+  },[treename])
   
 
   /*
@@ -149,8 +153,12 @@ function MainContent() {
             <div className="flex justify-center items-center absolute bottom-[11.5%] font-bold text-4xl text-white">
               {score}
             </div>
-            <div className="flex justify-center items-center absolute top-[9%] w-full h-full">
-              <img src={require(`../../assets/images/trees/${treename}.png`)} alt="tree" width="20%" />
+            <div className="flex justify-center items-center absolute bottom-[29%] ">
+              <img
+                src={require(`../../assets/images/trees/${treename}.png`)}
+                alt="tree"
+                className='w-[25%]'
+              />
             </div>
           </div>
 
