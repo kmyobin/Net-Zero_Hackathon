@@ -9,7 +9,13 @@ export default function Friends() {
         친구 농장 방문
       </div>
       <div className="absolute right-[10%] rounded-full bg-white w-14 h-14 flex flex-col items-center py-2 shadow-2xl -top-[28px]">
-        <img src={smallTree} alt="smallTree" width={"29px"} height={"24px"} />
+        <img
+          src={smallTree}
+          alt="smallTree"
+          width={"29px"}
+          height={"24px"}
+          className="transition-all hover:scale-125"
+        />
         <span className="text-gray-400 -mt-1">3</span>
       </div>
       <div className="overflow-y-auto h-full pt-10 pb-[340px]" id="friendList">
