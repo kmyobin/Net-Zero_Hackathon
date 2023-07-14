@@ -4,10 +4,10 @@ import Tree1 from "../../assets/images/icons/tree_1.svg"
 import Tree2 from "../../assets/images/icons/tree_2.svg"
 import Tree3 from "../../assets/images/icons/tree_3.svg";
 
-function PurchaseModal({ modalOpen, setModalOpen }) {
+function PurchaseModal({ purchaseOpen, setPurchaseOpen }) {
   const onClickCancel = () => {
-    setModalOpen(!modalOpen)
-  }
+    setPurchaseOpen(!purchaseOpen);
+  };
   return (
     <div className="absolute top-0 left-0 rounded-2xl w-full h-full z-10 bg-[rgba(0,0,0,0.4)]  flex justify-center items-center">
       <div className="relative w-[80%] h-[70%] rounded-xl bg-white z-20 ">
@@ -95,10 +95,8 @@ function PurchaseModal({ modalOpen, setModalOpen }) {
           </div>
         </div>
       </div>
-      ;
     </div>
   );
-  
 }
 
 export default PurchaseModal;
