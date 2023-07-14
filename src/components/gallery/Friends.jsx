@@ -8,7 +8,10 @@ export default function Friends() {
       <div className="absolute left-[10%] px-4 py-2 bg-white text-center text-sm rounded-3xl shadow-2xl -top-[18px]">
         친구 농장 방문
       </div>
-      <div className="absolute right-[10%] rounded-full bg-white w-14 h-14 flex flex-col items-center py-2 shadow-2xl -top-[28px]">
+      <div
+        className="absolute right-[10%] rounded-full bg-white w-14 h-14 flex flex-col items-center py-2 shadow-2xl -top-[28px]"
+        id="treeContainer"
+      >
         <img
           src={smallTree}
           alt="smallTree"

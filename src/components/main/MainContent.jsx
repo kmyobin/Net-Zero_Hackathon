@@ -4,14 +4,14 @@ import Header from "../../layout/Header";
 import Sky from "../../assets/images/sky.png";
 import ImageIcon from "../../assets/images/icons/Image.svg";
 import SmallTree from "../../assets/images/icons/smallTree_green.svg";
-import Receipt from "../../assets/images/icons/receipt.svg"
+import Receipt from "../../assets/images/icons/receipt.svg";
 
-import AWS from 'aws-sdk'
+import AWS from "aws-sdk";
 import PurchaseContent from "./PurchaseModal";
-const REGION = process.env.REACT_APP_AWS_REGION
-const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY
-const SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY
-const BUCKET = process.env.REACT_APP_AWS_BUCKET
+const REGION = process.env.REACT_APP_AWS_REGION;
+const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY;
+const SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY;
+const BUCKET = process.env.REACT_APP_AWS_BUCKET;
 
 AWS.config.update({
   region: REGION,
@@ -29,14 +29,14 @@ function MainContent() {
   };
 
   const onClickCamera = () => {
-    photoInput.current.click()
+    photoInput.current.click();
   };
 
   const handlePhoto = (e) => {
     if (e.target.files.length !== 0) {
       console.log("설정 완료", e.target.files[0]);
 
-      const s3 = new AWS.S3()
+      const s3 = new AWS.S3();
       if (e.target.files[0]) {
         const params = {
           Bucket: BUCKET,
@@ -44,7 +44,7 @@ function MainContent() {
           Body: e.target.files[0],
         };
 
-        console.log("params", params)
+        console.log("params", params);
         console.log("ASDFasdfasd");
 
         let pic_url;
@@ -60,23 +60,19 @@ function MainContent() {
 
         if (success) {
           // BE API 주소 요청
-
-
         }
-      }      
+      }
     }
-
-    
-  }
+  };
 
   useEffect(() => {
     setSuccess((prev) => prev);
-  },[success])
+  }, [success]);
 
   return (
     <>
       <div className="bg-[#68A67D] w-full h-full">
-        <div className='flex justify-center items-center'>
+        <div className="flex justify-center items-center">
           {success === true && <PurchaseContent />}
         </div>
         <Header />
