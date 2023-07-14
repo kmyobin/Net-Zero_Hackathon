@@ -13,8 +13,6 @@ const REGION = process.env.REACT_APP_AWS_REGION;
 const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY;
 const SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY;
 const BUCKET = process.env.REACT_APP_AWS_BUCKET;
-const CLOVA_API = process.env.REACT_APP_CLOVA_API;
-const CLOVA_SECRET = process.env.REACT_APP_CLOVA_SECRET;
 
 AWS.config.update({
   region: REGION,
@@ -48,7 +46,7 @@ function MainContent() {
         let color = res.data.result.color;
         let size = res.data.result.size;
 
-        console.log(color, size);
+        //console.log(color, size);
 
         if (color === 1 && size === 1) {
           setTreename("yellowsmall");
@@ -83,10 +81,6 @@ function MainContent() {
         console.log(err);
       });
   }, []);
-
-  const onClickImage = () => {
-    navigate("gallery");
-  };
 
   const onClickCamera = () => {
     photoInput.current.click();
@@ -129,57 +123,25 @@ function MainContent() {
     }
   }, [purchaseOpen]);
 
-  useEffect(() => {
-    console.log(treesize);
-  }, [treesize]);
-
   const getPurchaseList = () => {
-    console.log("picURL: ", picUrl);
-    const url = CLOVA_API;
-    const message = {
-      images: [
-        {
-          format: "jpg",
-          name: "medium",
-          data: null,
-          url: picUrl,
-        },
-      ],
-      lang: "ko",
-      requestId: "string",
-      resultType: "string",
-      timestamp: Date.now(), // 현재 시간으로 timestamp 설정
-      version: "V1",
-    };
-
-    axios
-      .post(url, message, {
-        headers: {
-          "Content-Type": "application/json",
-          "X-OCR-SECRET": CLOVA_SECRET,
-        },
+    axios.get(api_end_point + "/receipt",
+      {
+        params: {
+          imageUrl:
+            "https://firebasestorage.googleapis.com/v0/b/fir-test-c1c89.appspot.com/o/receipt.jpg?alt=media&token=40ea4e4a-6756-4f73-917c-2e75e9a8c72c"
+        }
       })
       .then((res) => {
-        console.log("성공", res);
+        console.log(res);
       })
       .catch((err) => {
-        console.log("실패", err);
+        console.log(err);
       });
   };
-
-  useEffect(() => {
-    console.log(treename);
-  }, [treename]);
 
   const onClickGarden = () => {
     navigate("/gallery");
   };
-
-  /*
-  useEffect(() => {
-    setModalOpen((prev) => prev);
-  }, [modalOpen]);
-  */
 
   // 테스트
   const getScore = (score) => {
