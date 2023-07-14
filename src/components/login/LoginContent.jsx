@@ -7,10 +7,20 @@ import logo from "../../assets/images/icons/gardenerLogo.svg";
 import facebook from "../../assets/images/icons/facebook.svg";
 import instagram from "../../assets/images/icons/instagram.svg";
 import google from "../../assets/images/icons/google.svg";
+import { useNavigate } from "react-router";
 
 function LoginContent() {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  const navigate = useNavigate();
+
+  const handleOnKeyPress = e => {
+    if (e.key === 'Enter') {
+      sessionStorage.setItem("name", id);
+      navigate("/");
+    }
+  }
+  
   return (
     <div>
       <div className="flex flex-col items-center mt-14 gap-5">
@@ -29,7 +39,7 @@ function LoginContent() {
         <h1 className="font-bold text-[30px]">가드너 (Gardener)</h1>
         <form className="flex flex-col gap-4 relative mt-4">
           <input
-            className="w-[300px] h-[60px] bg-[#D9D9D9] rounded-3xl p-2 outline-none placeholder:pl-4"
+            className="w-[300px] h-[60px] bg-[#D9D9D9] rounded-3xl p-5 outline-none "
             placeholder="아이디를 입력해 주세요!"
             value={id}
             onChange={(e) => {
@@ -37,12 +47,14 @@ function LoginContent() {
             }}
           ></input>
           <input
-            className="w-[300px] h-[60px] bg-[#D9D9D9] rounded-3xl p-2 outline-none placeholder:pl-4"
+            className="w-[300px] h-[60px] bg-[#D9D9D9] rounded-3xl p-5 outline-none"
             placeholder="비밀번호를 입력해 주세요!"
+            type='password'
             value={pw}
             onChange={(e) => {
               setPw(e.target.value);
             }}
+            onKeyDown={handleOnKeyPress}
           ></input>
           <span className="absolute right-0 -bottom-6 text-[#929292] text-xs opacity-70">
             Forget Password?
