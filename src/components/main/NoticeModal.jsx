@@ -1,6 +1,6 @@
 import React from 'react'
 import Cancel from "../../assets/images/icons/cancel.svg";
-import LevelUp from "../../assets/images/icons"
+import LevelUp from "../../assets/images/icons/levelup.svg"
 function NoticeModal({ noticeOpen, setNoticeOpen }) {
   const onClickCancel = () => {
     setNoticeOpen(!noticeOpen);
