@@ -6,6 +6,7 @@ import html2canvas from "html2canvas";
 import domtoimage from "dom-to-image";
 import { saveAs } from "file-saver";
 import smallTree from "../../assets/images/icons/smallTree_green.svg";
+import axios from "axios";
 
 export default function GalleryContent() {
   // treeContainer와 platform 사이의 거리 구하기
@@ -21,8 +22,17 @@ export default function GalleryContent() {
       platform.getBoundingClientRect().y;
 
     const tree = document.querySelector("#tree");
-    tree.style.left = `${342}px`;
+    tree.style.left = `${360}px`;
     tree.style.bottom = `${-30}px`;
+
+    // db에서 이미지 가져옴
+    const uniquePlatform = document.querySelector("#uniquePlatform");
+    axios
+      .get(`https://${BUCKET}.s3.${REGION}.amazonaws.com/1_platform.png`)
+      .then(() => {
+        uniquePlatform.src = `https://${BUCKET}.s3.${REGION}.amazonaws.com/1_platform.png`;
+      })
+      .catch(() => {});
   }, []);
 
   // AWS 서비스 이용
@@ -49,30 +59,25 @@ export default function GalleryContent() {
   };
 
   const handlePlatformUpload = (blob) => {
+    const file = new File([blob], "platform.png");
+
     const s3 = new AWS.S3();
     const params = {
       Bucket: BUCKET,
-      Key: "",
-      Body: "",
+      // 키값은 유저명_platform.png
+      Key: "1_platform.png",
+      Body: file,
     };
 
-    const file = new File([blob], "platform.png");
-    console.log(file);
-
-    // let pic_url;
-    // s3.upload(params, (err, data) => {
-    //   if (err) {
-    //     console.log("오류", err);
-    //   } else {
-    //     console.log("성공", data);
-    //     pic_url = data.Location;
-    //     setPurchaseOpen(true);
-    //   }
-    // });
-
-    // if (purchaseOpen) {
-    //   // BE API 주소 요청
-    // }
+    s3.upload(params, (err, data) => {
+      if (err) {
+        console.log("오류", err);
+      } else {
+        console.log("성공", data);
+        // 페이지 리로드
+        window.location.reload();
+      }
+    });
   };
 
   useEffect(() => {
@@ -150,11 +155,15 @@ export default function GalleryContent() {
     <div className="w-full bg-[#C3E2B8]">
       <div className="flex flex-col mb-6">
         <Header />
-        <div id="platform" className="m-auto relative">
+        <div id="platform" className="m-auto relative w-full">
           <img
             src={require("../../assets/images/platform.png")}
             alt="platform"
+            id="uniquePlatform"
           />
+          {/* <img
+            src={`https://${BUCKET}.s3.${REGION}.amazonaws.com/1_platform.png`}
+          /> */}
           <img
             src={smallTree}
             alt="smallTree"
