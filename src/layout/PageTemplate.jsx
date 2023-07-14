@@ -24,6 +24,7 @@ function PageTemplate({ content }) {
       (document.querySelector("#contentHeight").offsetHeight * 6) / 11 + "px"
     );
   });
+  const Lo = window.location.pathname;
 
   return (
     <div className="w-full h-screen flex justify-center flex-wrap items-center">
@@ -31,7 +32,7 @@ function PageTemplate({ content }) {
         className="relative flex h-[97.5%] w-full flex-col justify-between overflow-hidden bg-[#ECEFF4] rounded-2xl"
         id="contentHeight"
       >
-        {/* <Header /> */}
+        
         <div className="h-screen flex justify-center">{content}</div>
       </div>
     </div>
