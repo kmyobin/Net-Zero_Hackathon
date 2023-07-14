@@ -29,7 +29,6 @@ function PageTemplate({ content }) {
         className="relative flex h-[97.5%] w-full flex-col justify-between overflow-hidden rounded-2xl shadow-xl bg-white"
         id="contentHeight"
       >
-        {!Lo.includes("/login") && <Header />}
         <div className="h-screen flex justify-center w-full">{content}</div>
       </div>
     </div>
