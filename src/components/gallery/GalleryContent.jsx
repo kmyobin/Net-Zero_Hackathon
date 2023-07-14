@@ -160,6 +160,7 @@ export default function GalleryContent() {
             src={require("../../assets/images/platform.png")}
             alt="platform"
             id="uniquePlatform"
+            className="mx-auto"
           />
           {/* <img
             src={`https://${BUCKET}.s3.${REGION}.amazonaws.com/1_platform.png`}
