@@ -29,25 +29,25 @@ export default function GalleryContent() {
         setTreeToPaint(tree_1_1);
       }
       if (currentTree.size === 1 && currentTree.color === 2) {
-        setTreeToPaint(tree_1_2);
+        setTreeToPaint(tree_2_1);
       }
       if (currentTree.size === 1 && currentTree.color === 3) {
-        setTreeToPaint(tree_1_3);
+        setTreeToPaint(tree_3_1);
       }
       if (currentTree.size === 2 && currentTree.color === 1) {
-        setTreeToPaint(tree_2_1);
+        setTreeToPaint(tree_1_2);
       }
       if (currentTree.size === 2 && currentTree.color === 2) {
         setTreeToPaint(tree_2_2);
       }
       if (currentTree.size === 2 && currentTree.color === 3) {
-        setTreeToPaint(tree_2_3);
+        setTreeToPaint(tree_3_2);
       }
       if (currentTree.size === 3 && currentTree.color === 1) {
-        setTreeToPaint(tree_3_1);
+        setTreeToPaint(tree_1_3);
       }
       if (currentTree.size === 3 && currentTree.color === 2) {
-        setTreeToPaint(tree_3_2);
+        setTreeToPaint(tree_2_3);
       }
       if (currentTree.size === 3 && currentTree.color === 3) {
         setTreeToPaint(tree_3_3);
@@ -61,7 +61,8 @@ export default function GalleryContent() {
     tree.style.bottom = `${-30}px`;
 
     axios.get("http://www.cookie-server.shop:9000/trees/1").then((res) => {
-      console.log(res.data);
+      console.log(res.data.result.score);
+      console.log(res.data.result.currentTree);
       setCurrentScore(res.data.result.score);
       setCurrentTree(res.data.result.currentTree);
     });
@@ -110,7 +111,11 @@ export default function GalleryContent() {
         console.log("오류", err);
       } else {
         console.log("성공", data);
-        window.location.reload();
+        axios
+          .post("http://www.cookie-server.shop:9000/current/1")
+          .then((res) => {
+            window.location.reload();
+          });
       }
     });
   };
@@ -205,7 +210,7 @@ export default function GalleryContent() {
           />
 
           <img
-            src={setTreeToPaint && setTreeToPaint}
+            src={treeToPaint && treeToPaint}
             alt="smallTree"
             width={"29px"}
             height={"24px"}
