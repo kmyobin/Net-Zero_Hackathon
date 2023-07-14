@@ -28,12 +28,13 @@ function MainContent() {
   const navigate = useNavigate();
   const photoInput = useRef(null);
   const [purchaseOpen, setPurchaseOpen] = useState(false);
-  const [treeOpen, setTreeOpen] = useState(true);
+  const [treeOpen, setTreeOpen] = useState(false);
   const [itemOpen, setItemOpen] = useState(false);
   const [score, setScore] = useState(5000);
   const [treename, setTreename] = useState("greensmall");
   const [treesize, setTreesize] = useState(50);
   const [picUrl, setPicUrl] = useState("");
+  const [isOverScore, setIsOverScore] = useState(false);
 
   useEffect(() => {
     if (!sessionStorage.getItem("name")) {
@@ -43,7 +44,6 @@ function MainContent() {
     axios
       .get(api_end_point + "/user/1")
       .then((res) => {
-        console.log(res);
         setScore(res.data.result.score);
         let color = res.data.result.color;
         let size = res.data.result.size;
@@ -180,8 +180,38 @@ function MainContent() {
     setModalOpen((prev) => prev);
   }, [modalOpen]);
   */
+
+  // 테스트
+  const getScore = (score) => {
+    axios
+      .get("http://www.cookie-server.shop:9000/score/1", {
+        params: {
+          // score값은 이전에 증가한 score로
+          score: score,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.result.currentTreeScoreIs === true) {
+          setItemOpen(true);
+        }
+        if (res.data.result.totalScoreIs === true) {
+          setIsOverScore(true);
+        }
+      });
+  };
+
   return (
     <>
+      {/* 테스트용 버튼 */}
+      <button
+        onClick={() => {
+          getScore(10);
+        }}
+      >
+        테스트
+      </button>
+
       <div className="bg-[#68A67D] w-full h-full">
         <div className="">
           {purchaseOpen && (
@@ -198,7 +228,12 @@ function MainContent() {
         </div>
         <div className="">
           {itemOpen && (
-            <RewardItemModal itemOpen={itemOpen} setItemOpen={setItemOpen} />
+            <RewardItemModal
+              itemOpen={itemOpen}
+              setItemOpen={setItemOpen}
+              isOverScore={isOverScore}
+              setTreeOpen={setTreeOpen}
+            />
           )}
         </div>
         <Header />
