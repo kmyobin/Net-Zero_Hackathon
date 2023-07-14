@@ -29,7 +29,7 @@ function RewardItemModal({ itemOpen, setItemOpen, setTreeOpen, isOverScore }) {
         />
 
         <div className="">
-          <div className="font-[1000] text-4xl my-[15%] flex justify-center items-center">
+          <div className="font-[1000] text-4xl mt-[15%] mb-[10%] flex justify-center items-center">
             축하합니다!
           </div>
           <div className="flex justify-center items-center">
@@ -39,7 +39,7 @@ function RewardItemModal({ itemOpen, setItemOpen, setTreeOpen, isOverScore }) {
             </div>
           </div>
 
-          <div className="my-[8%] flex justify-center items-center text-center">
+          <div className="mt-[15%] flex justify-center items-center text-center">
             {sessionStorage.getItem("name")} 님의 정원에 심을 수 있는
             <br />
             새싹이 추가되었어요.
