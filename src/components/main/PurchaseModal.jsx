@@ -4,9 +4,10 @@ import Tree1 from "../../assets/images/icons/tree_1.svg"
 import Tree2 from "../../assets/images/icons/tree_2.svg"
 import Tree3 from "../../assets/images/icons/tree_3.svg";
 
-function PurchaseModal({ purchaseOpen, setPurchaseOpen }) {
+function PurchaseModal({ purchaseOpen, setPurchaseOpen, getScore }) {
   const onClickCancel = () => {
     setPurchaseOpen(!purchaseOpen);
+    getScore(8);
   };
   setTimeout(function () {
     const element = document.querySelector(".scale-0");
@@ -17,7 +18,7 @@ function PurchaseModal({ purchaseOpen, setPurchaseOpen }) {
   }, 100);
   return (
     <div className="absolute top-0 left-0 rounded-2xl w-full h-full z-10 bg-[rgba(0,0,0,0.4)]  flex justify-center items-center transition ease-in-out delay-150">
-      <div className="relative w-[80%] h-[80%] rounded-xl bg-white z-20 scale-0 transform transition-transform duration-1000">
+      <div className="relative w-[80%]  max-h-[80%] rounded-xl bg-white z-20 scale-0 transform transition-transform duration-1000">
         <img
           src={Cancel}
           alt="cancel"
@@ -37,7 +38,7 @@ function PurchaseModal({ purchaseOpen, setPurchaseOpen }) {
           </div>
           <div>
             <div className="rounded-full bg-[#00B289] w-[60px] h-[60px] flex justify-center items-center font-extrabold text-3xl text-white">
-              +9
+              +8
             </div>
           </div>
         </div>
@@ -51,7 +52,7 @@ function PurchaseModal({ purchaseOpen, setPurchaseOpen }) {
           </div>
           <div className="rounded-xl bg-[#E6FDE6] w-full p-4 mb-3 px-7 relative">
             <div className="flex justify-between w-full">
-              <div>칠성사이다캔250ml</div>
+              <div>몬스터에너지울트라355ml</div>
               <div className="font-black">1개</div>
             </div>
             <div className="flex justify-between w-full">
@@ -65,7 +66,7 @@ function PurchaseModal({ purchaseOpen, setPurchaseOpen }) {
           </div>
           <div className="rounded-xl bg-[#EAEAEA] w-full p-4 mb-3 mt-3 px-7">
             <div className="flex justify-between w-full">
-              <div>해태)갈아만든배500ml</div>
+              <div>코카콜라페트500ml</div>
               <div className="font-black">1개</div>
             </div>
           </div>
@@ -85,10 +86,11 @@ function PurchaseModal({ purchaseOpen, setPurchaseOpen }) {
           </div>
           <div className="rounded-xl bg-[#EAEAEA] w-full p-4 mb-3 mt-3 px-7">
             <div className="flex justify-between w-full">
-              <div>해태)갈아만든배500ml</div>
+              <div>롯데)후라보노오리지날26g</div>
               <div className="font-black">1개</div>
             </div>
           </div>
+          {/*
           <div className="rounded-xl bg-[#E6FDE6] w-full p-4 mb-3 px-7 relative">
             <div className="flex justify-between w-full">
               <div>칠성사이다캔250ml</div>
@@ -103,6 +105,7 @@ function PurchaseModal({ purchaseOpen, setPurchaseOpen }) {
               />
             </div>
           </div>
+          */}
         </div>
       </div>
     </div>

@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../layout/Header";
 import Sky from "../../assets/images/sky.png";
 import Receipt from "../../assets/images/icons/receipt.svg";
-
+import LoadingIcon from "../../assets/images/icons/loading.svg"
 import AWS from "aws-sdk";
 import PurchaseModal from "./PurchaseModal";
 import RewardTreeModal from "./RewardTreeModal";
 import RewardItemModal from "./RewardItemModal";
+
 import axios from "axios";
+import Loading from "./Loading";
 const REGION = process.env.REACT_APP_AWS_REGION;
 const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY;
 const SECRET_KEY = process.env.REACT_APP_AWS_SECRET_KEY;
@@ -33,6 +35,7 @@ function MainContent() {
   const [treesize, setTreesize] = useState(50);
   const [picUrl, setPicUrl] = useState("");
   const [isOverScore, setIsOverScore] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!sessionStorage.getItem("name")) {
@@ -109,6 +112,7 @@ function MainContent() {
             console.log("성공", data);
             pic_url = data.Location;
             setPicUrl(data.Location);
+            setLoading(true);
             setPurchaseOpen(true);
           }
         });
@@ -117,11 +121,14 @@ function MainContent() {
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000)
     if (purchaseOpen) {
       // 구매 목록 api 받아오기
       getPurchaseList();
     }
-  }, [purchaseOpen]);
+  }, [purchaseOpen, loading]);
 
   const getPurchaseList = () => {
     axios.get(api_end_point + "/receipt",
@@ -163,23 +170,28 @@ function MainContent() {
       });
   };
 
+
   return (
     <>
-      {/* 테스트용 버튼 */}
+      {/* 테스트용 버튼
       <button
         onClick={() => {
           getScore(10);
         }}
       >
         테스트
-      </button>
+      </button> */}
+      {loading && (
+        <Loading/>
+      )}
 
       <div className="bg-[#68A67D] w-full h-full">
         <div className="">
-          {purchaseOpen && (
+          {purchaseOpen && !loading && (
             <PurchaseModal
               purchaseOpen={purchaseOpen}
               setPurchaseOpen={setPurchaseOpen}
+              getScore={getScore}
             />
           )}
         </div>
@@ -226,7 +238,7 @@ function MainContent() {
             </div>
           </div>
 
-          <div className="mt-[15%] flex justify-center items-center">
+          <div className="mt-[18%] flex justify-center items-center">
             <div
               className="bg-white rounded-full p-5 shadow-2xl w-[70px] h-[70px] cursor-pointer"
               onClick={onClickCamera}
