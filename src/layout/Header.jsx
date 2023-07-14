@@ -2,7 +2,7 @@ import React from "react";
 import Tree from "./Tree";
 import Home from "../assets/images/icons/Home.svg";
 import { useNavigate } from "react-router-dom";
-import Cloud from "../assets/images/icons/cloud.svg"
+import Cloud from "../assets/images/icons/cloud.svg";
 
 function Header() {
   const navigate = useNavigate();
@@ -12,8 +12,8 @@ function Header() {
   };
 
   const onClickCloud = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   const Lo = window.location.pathname;
 
