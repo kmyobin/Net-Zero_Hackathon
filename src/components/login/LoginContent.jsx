@@ -8,7 +8,6 @@ import facebook from "../../assets/images/icons/facebook.svg";
 import instagram from "../../assets/images/icons/instagram.svg";
 import google from "../../assets/images/icons/google.svg";
 
-
 function LoginContent() {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -76,7 +75,7 @@ function LoginContent() {
         className="absolute bottom-0 right-[30%] w-[89px]"
       />
     </div>
-  );  
+  );
 }
 
 export default LoginContent;

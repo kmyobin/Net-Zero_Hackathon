@@ -29,11 +29,11 @@ function PageTemplate({ content }) {
   return (
     <div className="w-full h-screen flex justify-center flex-wrap items-center">
       <div
-        className="relative flex h-[97.5%] w-full flex-col justify-between overflow-hidden bg-[#ECEFF4] rounded-2xl"
+        className="relative flex h-[97.5%] w-full flex-col justify-between overflow-hidden rounded-2xl shadow-xl bg-white"
         id="contentHeight"
       >
-        {!Lo.includes('/login') &&<Header/>}
-        <div className="h-screen flex justify-center">{content}</div>
+        {!Lo.includes("/login") && <Header />}
+        <div className="h-screen flex justify-center w-full">{content}</div>
       </div>
     </div>
   );
